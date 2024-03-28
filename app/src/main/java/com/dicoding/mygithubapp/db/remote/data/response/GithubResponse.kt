@@ -1,15 +1,19 @@
-package com.dicoding.mygithubapp.data.response
+package com.dicoding.mygithubapp.db.remote.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class FollowingResponse(
+data class GithubResponse(
+	@field:SerializedName("total_count")
+	val totalCount: Int,
 
-	@field:SerializedName("FollowingResponse")
-	val followingResponse: List<FollowingResponseItem>
+	@field:SerializedName("incomplete_results")
+	val incompleteResults: Boolean,
+
+	@field:SerializedName("items")
+	val items: List<UserResponse>
 )
 
-data class FollowingResponseItem(
-
+data class UserResponse(
 	@field:SerializedName("gists_url")
 	val gistsUrl: String,
 
@@ -36,6 +40,9 @@ data class FollowingResponseItem(
 
 	@field:SerializedName("subscriptions_url")
 	val subscriptionsUrl: String,
+
+	@field:SerializedName("score")
+	val score: Any,
 
 	@field:SerializedName("received_events_url")
 	val receivedEventsUrl: String,

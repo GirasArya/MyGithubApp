@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId = "com.dicoding.mygithubapp"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 29
         versionCode = 1
         versionName = "1.0"
 

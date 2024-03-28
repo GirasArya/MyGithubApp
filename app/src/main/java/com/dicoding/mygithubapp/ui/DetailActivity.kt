@@ -1,22 +1,17 @@
-package com.dicoding.mygithubapp
+package com.dicoding.mygithubapp.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.TableLayout
 import androidx.annotation.StringRes
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.dicoding.mygithubapp.R
 import com.dicoding.mygithubapp.databinding.ActivityDetailBinding
-import com.dicoding.mygithubapp.ui.viewmodel.DetailUserViewModel
 import com.dicoding.mygithubapp.ui.adapter.SectionsPagerAdapter
-import com.google.android.material.tabs.TabLayout
+import com.dicoding.mygithubapp.ui.viewmodel.DetailUserViewModel
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class DetailActivity : AppCompatActivity() {
 

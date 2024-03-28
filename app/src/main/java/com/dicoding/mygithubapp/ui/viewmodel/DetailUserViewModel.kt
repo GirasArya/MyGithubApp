@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.mygithubapp.data.response.ApiConfig
-import com.dicoding.mygithubapp.data.response.DetailUserResponse
+import com.dicoding.mygithubapp.db.remote.data.response.ApiConfig
+import com.dicoding.mygithubapp.db.remote.data.response.DetailUserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

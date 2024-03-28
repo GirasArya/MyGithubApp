@@ -1,14 +1,14 @@
-package com.dicoding.mygithubapp.data.response
+package com.dicoding.mygithubapp.db.remote.data.response
 
 import com.google.gson.annotations.SerializedName
 
-data class FollowerResponse(
+data class FollowingResponse(
 
-	@field:SerializedName("FollowerResponse")
-	val followerResponse: List<FollowerResponseItem>
+	@field:SerializedName("FollowingResponse")
+	val followingResponse: List<FollowingResponseItem>
 )
 
-data class FollowerResponseItem(
+data class FollowingResponseItem(
 
 	@field:SerializedName("gists_url")
 	val gistsUrl: String,

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.dicoding.mygithubapp.data.response.UserResponse
+import com.dicoding.mygithubapp.db.remote.data.response.UserResponse
 import com.dicoding.mygithubapp.databinding.UserItemBinding
 
 //Adapter Recycler view untuk List

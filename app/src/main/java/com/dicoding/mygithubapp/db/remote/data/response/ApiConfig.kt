@@ -1,4 +1,4 @@
-package com.dicoding.mygithubapp.data.response
+package com.dicoding.mygithubapp.db.remote.data.response
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

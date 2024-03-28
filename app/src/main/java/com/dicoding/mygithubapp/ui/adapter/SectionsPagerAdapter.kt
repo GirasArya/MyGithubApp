@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.dicoding.mygithubapp.FollowFragment
+import com.dicoding.mygithubapp.ui.FollowFragment
 
 class SectionsPagerAdapter(
     activity: AppCompatActivity,

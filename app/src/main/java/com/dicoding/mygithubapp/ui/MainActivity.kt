@@ -1,16 +1,16 @@
-package com.dicoding.mygithubapp
+package com.dicoding.mygithubapp.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dicoding.mygithubapp.data.response.UserResponse
 import com.dicoding.mygithubapp.databinding.ActivityMainBinding
-import com.dicoding.mygithubapp.ui.viewmodel.MainViewModel
+import com.dicoding.mygithubapp.db.remote.data.response.UserResponse
 import com.dicoding.mygithubapp.ui.adapter.UserAdapter
+import com.dicoding.mygithubapp.ui.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUserData(userData: List<UserResponse>) {
         val adapter = UserAdapter()
         adapter.notifyDataSetChanged()
-        adapter.setItemOnClickCallback(object : UserAdapter.OnItemClickCallback{
+        adapter.setItemOnClickCallback(object : UserAdapter.OnItemClickCallback {
             override fun onItemClicked(user: UserResponse) {
                 Intent(this@MainActivity, DetailActivity::class.java).also {
                     it.putExtra(DetailActivity.EXTRA_USERNAME, user.login)
