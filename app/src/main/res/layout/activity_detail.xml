@@ -123,5 +123,20 @@
         app:layout_constraintTop_toBottomOf="@+id/tabLayout_DetailUser"
         tools:visibility="visible" />
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addFave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:foregroundGravity="bottom"
+        app:fabSize="normal"
+        app:layout_anchorGravity="bottom|end"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager_DetailUser"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout_DetailUser"
+        app:layout_constraintVertical_bias="0.85"
+        app:srcCompat="@drawable/ic_bookmark_outline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

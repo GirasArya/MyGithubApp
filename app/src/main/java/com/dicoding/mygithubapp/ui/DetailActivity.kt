@@ -13,12 +13,14 @@ import com.dicoding.mygithubapp.ui.adapter.SectionsPagerAdapter
 import com.dicoding.mygithubapp.ui.viewmodel.DetailUserViewModel
 import com.google.android.material.tabs.TabLayoutMediator
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(){
 
     private lateinit var binding: ActivityDetailBinding
+    var isCheck = false
 
     companion object {
         const val EXTRA_USERNAME = "extra_username"
+        const val EXTRA_ID = "extra_id"
 
         @StringRes
         private val TAB_TITLES = intArrayOf(
@@ -40,6 +42,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val username = intent.getStringExtra(EXTRA_USERNAME) ?: ""
+        val id = intent.getIntExtra(EXTRA_ID, 0)
 
         binding.viewPagerDetailUser.adapter =
             SectionsPagerAdapter(this, supportFragmentManager, username)
@@ -55,10 +58,7 @@ class DetailActivity : AppCompatActivity() {
         val bundle = Bundle()
         bundle.putString(EXTRA_USERNAME, username)
 
-        val viewModel = ViewModelProvider(
-            this,
-            ViewModelProvider.NewInstanceFactory()
-        ).get(DetailUserViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(DetailUserViewModel::class.java)
 
         viewModel.isLoading.observe(this) {
             showLoadingDetail(it)
@@ -80,8 +80,19 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         }
-    }
 
+        binding.fabAddFave.setOnClickListener{
+            isCheck = !isCheck
+            if (isCheck){
+                viewModel.addToFavoriteUser(username, id)
+                binding.fabAddFave.setImageResource(R.drawable.ic_bookmark_fill)
+            }
+            else{
+                viewModel.deleteFavoriteUser(username, id)
+                binding.fabAddFave.setImageResource(R.drawable.ic_bookmark_outline)
+            }
+        }
+    }
     private fun showLoadingDetail(isLoading: Boolean) {
         if (isLoading) {
             binding.progressBarUserDetail.visibility = View.VISIBLE
