@@ -1,5 +1,6 @@
 package com.dicoding.mygithubapp
 
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.mygithubapp.databinding.ActivityFavoriteBinding
+import com.dicoding.mygithubapp.db.local.FavoriteUser
 import com.dicoding.mygithubapp.helper.ViewModelFactory
 import com.dicoding.mygithubapp.ui.adapter.FavoriteAdapter
 import com.dicoding.mygithubapp.ui.viewmodel.FavoriteViewModel
@@ -42,6 +44,18 @@ class FavoriteActivity : AppCompatActivity() {
         binding?.rvFavoriteList?.layoutManager = LinearLayoutManager(this)
         binding?.rvFavoriteList?.setHasFixedSize(true)
         binding?.rvFavoriteList?.adapter = adapter
+
+        adapter.setOnItemCLickCallback(object : FavoriteAdapter.OnItemClickCallback {
+            override fun onItemClicked(user: FavoriteUser, position: Int) {
+                val intent = Intent(this@FavoriteActivity, DetailActivity::class.java).also {
+                    it.putExtra(DetailActivity.EXTRA_USERNAME, user.userName)
+                    it.putExtra(DetailActivity.EXTRA_ID, user.userID)
+                    it.putExtra(DetailActivity.EXTRA_AVATAR, user.avatar)
+                    it.putExtra(DetailActivity.EXTRA_URL, user.userURL)
+                    startActivity(it)
+                }
+            }
+        })
     }
 
 

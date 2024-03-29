@@ -10,6 +10,10 @@ import com.dicoding.mygithubapp.db.local.FavoriteUser
 import com.dicoding.mygithubapp.helper.UserCallback
 
 class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>() {
+    private var onItemClickCallback: OnItemClickCallback? = null
+    fun setOnItemCLickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     private val listFavUser = ArrayList<FavoriteUser>()
     fun setFavoriteUser(listUser: List<FavoriteUser>) {
@@ -46,6 +50,12 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder>
                 tvUsername.text = favUser.userName
                 tvURL.text = favUser.userURL
             }
+            binding.root.setOnClickListener {
+                onItemClickCallback?.onItemClicked(favUser, adapterPosition)
+            }
         }
+    }
+    interface OnItemClickCallback {
+        fun onItemClicked(user: FavoriteUser, position: Int)
     }
 }
