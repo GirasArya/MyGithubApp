@@ -10,6 +10,7 @@ import com.dicoding.mygithubapp.db.local.FavoriteUserDao
 import com.dicoding.mygithubapp.db.local.FavoriteUserDatabase
 import com.dicoding.mygithubapp.db.remote.data.response.ApiConfig
 import com.dicoding.mygithubapp.db.remote.data.response.DetailUserResponse
+import com.dicoding.mygithubapp.repository.FavoriteUserRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,6 +34,9 @@ class DetailUserViewModel(application : Application) : AndroidViewModel(applicat
     companion object {
         private const val DETAILTAG = "DetailViewModel"
     }
+
+    private val mFavoriteUserRepository : FavoriteUserRepository = FavoriteUserRepository(application)
+    fun getFavoriteUser() : LiveData<List<FavoriteUser>> = mFavoriteUserRepository.getFavoriteUser()
 
     fun displayUserDetail(username: String) {
         _isLoading.value = true
