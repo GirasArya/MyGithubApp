@@ -47,7 +47,7 @@ class FavoriteActivity : AppCompatActivity() {
 
         adapter.setOnItemCLickCallback(object : FavoriteAdapter.OnItemClickCallback {
             override fun onItemClicked(user: FavoriteUser, position: Int) {
-                val intent = Intent(this@FavoriteActivity, DetailActivity::class.java).also {
+                Intent(this@FavoriteActivity, DetailActivity::class.java).also {
                     it.putExtra(DetailActivity.EXTRA_USERNAME, user.userName)
                     it.putExtra(DetailActivity.EXTRA_ID, user.userID)
                     it.putExtra(DetailActivity.EXTRA_AVATAR, user.avatar)
