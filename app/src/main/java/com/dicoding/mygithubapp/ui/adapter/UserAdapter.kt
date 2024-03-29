@@ -24,6 +24,7 @@ class UserAdapter : ListAdapter<UserResponse, UserAdapter.UserViewHolder>(DIFF_C
             }
         }
     }
+
     private var onItemClickCallback : OnItemClickCallback? = null
 
     fun setItemOnClickCallback(onItemClickCallback: OnItemClickCallback){

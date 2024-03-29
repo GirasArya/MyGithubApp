@@ -4,10 +4,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.mygithubapp.ui.MainActivity
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import com.dicoding.mygithubapp.MainActivity
 import com.dicoding.mygithubapp.db.remote.data.response.ApiConfig
 import com.dicoding.mygithubapp.db.remote.data.response.GithubResponse
 import com.dicoding.mygithubapp.db.remote.data.response.UserResponse
+import com.dicoding.mygithubapp.SettingPreferences
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -79,7 +83,6 @@ class MainViewModel : ViewModel() {
         })
 
     }
-
     init {
         displayUser()
     }

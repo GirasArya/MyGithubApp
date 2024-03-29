@@ -1,4 +1,4 @@
-package com.dicoding.mygithubapp.ui
+package com.dicoding.mygithubapp
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,5 +1,6 @@
-package com.dicoding.mygithubapp.ui
+package com.dicoding.mygithubapp
 
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.StringRes
@@ -7,7 +8,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.dicoding.mygithubapp.R
 import com.dicoding.mygithubapp.databinding.ActivityDetailBinding
 import com.dicoding.mygithubapp.ui.adapter.SectionsPagerAdapter
 import com.dicoding.mygithubapp.ui.viewmodel.DetailUserViewModel
@@ -21,6 +21,8 @@ class DetailActivity : AppCompatActivity(){
     companion object {
         const val EXTRA_USERNAME = "extra_username"
         const val EXTRA_ID = "extra_id"
+        const val EXTRA_AVATAR = "extra_avatar"
+        const val EXTRA_URL = "extra_url"
 
         @StringRes
         private val TAB_TITLES = intArrayOf(
@@ -34,7 +36,7 @@ class DetailActivity : AppCompatActivity(){
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.elevation = 0f
-
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.green)))
         val actionBar: ActionBar? = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
@@ -43,6 +45,8 @@ class DetailActivity : AppCompatActivity(){
 
         val username = intent.getStringExtra(EXTRA_USERNAME) ?: ""
         val id = intent.getIntExtra(EXTRA_ID, 0)
+        val avatar = intent.getStringExtra(EXTRA_AVATAR)
+        val userUrl = intent.getStringExtra(EXTRA_URL)
 
         binding.viewPagerDetailUser.adapter =
             SectionsPagerAdapter(this, supportFragmentManager, username)
@@ -84,12 +88,12 @@ class DetailActivity : AppCompatActivity(){
         binding.fabAddFave.setOnClickListener{
             isCheck = !isCheck
             if (isCheck){
-                viewModel.addToFavoriteUser(username, id)
-                binding.fabAddFave.setImageResource(R.drawable.ic_bookmark_fill)
+                viewModel.addToFavoriteUser(username, id, avatar!!, userUrl!!)
+                binding.fabAddFave.setImageResource(R.drawable.ic_favorite_fill)
             }
             else{
-                viewModel.deleteFavoriteUser(username, id)
-                binding.fabAddFave.setImageResource(R.drawable.ic_bookmark_outline)
+                viewModel.deleteFavoriteUser(username, id, avatar!!, userUrl!!)
+                binding.fabAddFave.setImageResource(R.drawable.ic_favorite_outline)
             }
         }
     }

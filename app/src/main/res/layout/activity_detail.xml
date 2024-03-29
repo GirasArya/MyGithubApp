@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetailActivity">
+    tools:context=".DetailActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ivUserImage"
@@ -137,6 +137,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout_DetailUser"
         app:layout_constraintVertical_bias="0.85"
-        app:srcCompat="@drawable/ic_bookmark_outline" />
+        app:srcCompat="@drawable/ic_favorite_outline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

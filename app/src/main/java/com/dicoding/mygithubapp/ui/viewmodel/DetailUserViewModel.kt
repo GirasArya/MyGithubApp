@@ -58,16 +58,16 @@ class DetailUserViewModel(application : Application) : AndroidViewModel(applicat
         return userDetail
     }
 
-    fun addToFavoriteUser(username: String, id : Int){
+    fun addToFavoriteUser(username: String, id : Int, avatarUrl : String, userUrl : String){
         CoroutineScope(Dispatchers.IO).launch {
-            var user = FavoriteUser(id, username)
+            var user = FavoriteUser(id, username, avatarUrl, userUrl)
             userDao.addFavoriteUser(user)
         }
     }
 
-    fun deleteFavoriteUser(username: String, id: Int){
+    fun deleteFavoriteUser(username: String, id: Int, avatarUrl : String, userUrl : String){
         CoroutineScope(Dispatchers.IO).launch {
-            var user = FavoriteUser(id, username)
+            var user = FavoriteUser(id, username, avatarUrl, userUrl)
             userDao.deleteFavoriteUser(user)
         }
     }

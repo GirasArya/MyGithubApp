@@ -3,13 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_favorite"
-        android:icon="@drawable/ic_bookmark_fill"
+        android:icon="@drawable/ic_favorite_fill"
         android:title="@string/menu_title_favorite"
-        app:showAsAction="always" />
+        app:theme="@style/Base.Theme.MyGithubApp"
+        app:showAsAction="always"
+         />
 
     <item
         android:id="@+id/action_theme"
         android:icon="@drawable/ic_dark_mode"
         android:title="@string/menu_title_themeOption"
-        app:showAsAction="always" />
+        app:theme="@style/Base.Theme.MyGithubApp"
+        app:showAsAction="always"
+        />
 </menu>

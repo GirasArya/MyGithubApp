@@ -14,4 +14,5 @@
     <string name="tvfollowusername">tvFollowUsername</string>
     <string name="menu_title_favorite">Favorite</string>
     <string name="menu_title_themeOption">Theme</string>
+    <string name="toggle_switch">Click Me!</string>
 </resources>
