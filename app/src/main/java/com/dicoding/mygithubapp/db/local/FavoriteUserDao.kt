@@ -17,4 +17,7 @@ interface FavoriteUserDao {
 
     @Query("SELECT * FROM FavoriteUser ORDER BY userID")
     fun getFavoriteUser(): LiveData<List<FavoriteUser>>
+
+    @Query("SELECT count(*) FROM FavoriteUser WHERE userID = :id")
+    fun getUserById(id : Int) : Int
 }

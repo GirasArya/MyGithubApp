@@ -102,15 +102,16 @@
     </com.google.android.material.tabs.TabLayout>
 
 
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager_DetailUser"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout_DetailUser"/>
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout_DetailUser"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar
         android:id="@+id/progressBarUserDetail"
@@ -123,20 +124,43 @@
         app:layout_constraintTop_toBottomOf="@+id/tabLayout_DetailUser"
         tools:visibility="visible" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_addFave"
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:foregroundGravity="bottom"
-        app:fabSize="normal"
-        app:layout_anchorGravity="bottom|end"
-        app:layout_constraintBottom_toBottomOf="@+id/viewPager_DetailUser"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivUserImage"
         app:layout_constraintTop_toBottomOf="@+id/tabLayout_DetailUser"
-        app:layout_constraintVertical_bias="0.85"
-        app:srcCompat="@drawable/ic_favorite_outline" />
+        app:layout_constraintVertical_bias="0.80">
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/rectangle" />
+
+        <ToggleButton
+            android:id="@+id/fab_addFave"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/toggle_favorite"
+            android:foregroundGravity="bottom"
+            android:textOff=""
+            android:textOn=""
+            app:fabSize="normal"
+            app:layout_anchorGravity="bottom|end"
+            app:layout_constraintBottom_toBottomOf="@+id/viewPager_DetailUser"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

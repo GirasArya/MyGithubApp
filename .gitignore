@@ -13,4 +13,5 @@
 .externalNativeBuild
 .cxx
 /app/src/main/java/com/dicoding/mygithubapp/data/response/ApiService.kt
+/app/build.gradle.kts
 local.properties

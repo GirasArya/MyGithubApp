@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_favorite"
-        android:icon="@drawable/ic_favorite_fill"
+        android:icon="@drawable/ic_favorite_fill_menu"
         android:title="@string/menu_title_favorite"
         app:theme="@style/Base.Theme.MyGithubApp"
         app:showAsAction="always"

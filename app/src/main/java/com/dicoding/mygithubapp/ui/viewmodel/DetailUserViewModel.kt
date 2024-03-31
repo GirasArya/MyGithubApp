@@ -65,6 +65,8 @@ class DetailUserViewModel(application : Application) : AndroidViewModel(applicat
         }
     }
 
+    fun checkUserById(id : Int) = userDao.getUserById(id)
+
     fun deleteFavoriteUser(username: String, id: Int, avatarUrl : String, userUrl : String){
         CoroutineScope(Dispatchers.IO).launch {
             var user = FavoriteUser(id, username, avatarUrl, userUrl)

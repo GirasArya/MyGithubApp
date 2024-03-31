@@ -12,11 +12,14 @@ import com.dicoding.mygithubapp.databinding.ActivityDetailBinding
 import com.dicoding.mygithubapp.ui.adapter.SectionsPagerAdapter
 import com.dicoding.mygithubapp.ui.viewmodel.DetailUserViewModel
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class DetailActivity : AppCompatActivity(){
+class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
-    var isCheck = false
 
     companion object {
         const val EXTRA_USERNAME = "extra_username"
@@ -85,17 +88,31 @@ class DetailActivity : AppCompatActivity(){
             }
         }
 
-        binding.fabAddFave.setOnClickListener{
-            isCheck = !isCheck
-            if (isCheck){
-                viewModel.addToFavoriteUser(username, id, avatar!!, userUrl!!)
-                binding.fabAddFave.setImageResource(R.drawable.ic_favorite_fill)
-            }
-            else{
-                viewModel.deleteFavoriteUser(username, id, avatar!!, userUrl!!)
-                binding.fabAddFave.setImageResource(R.drawable.ic_favorite_outline)
+        var isCheck = false
+        CoroutineScope(Dispatchers.IO).launch {
+            val check = viewModel.checkUserById(id)
+            withContext(Dispatchers.Main) {
+                if (check != null) {
+                    if (check > 0) {
+                        binding.fabAddFave.isChecked = true
+                        isCheck = true
+                    } else {
+                        binding.fabAddFave.isChecked = false
+                        isCheck = false
+                    }
+                }
             }
         }
+        binding.fabAddFave.setOnClickListener {
+            isCheck = !isCheck
+            if (isCheck) {
+                viewModel.addToFavoriteUser(username, id, avatar!!, userUrl!!)
+            } else {
+                viewModel.deleteFavoriteUser(username, id, avatar!!, userUrl!!)
+            }
+            binding.fabAddFave.isChecked = isCheck
+        }
+
     }
     private fun showLoadingDetail(isLoading: Boolean) {
         if (isLoading) {
